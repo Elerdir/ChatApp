@@ -23,22 +23,15 @@ public static class ConversationEndpoints
         // get conversation detail (members etc.)
         group.MapGet("/{conversationId:guid}", Get);
 
-        // create direct
         group.MapPost("/direct", CreateDirect)
             .AddEndpointFilter<ValidateBodyFilter<CreateDirectConversationRequest>>();
-            // .RequireRateLimiting("conversations-create"); // volitelné
 
-        // create group
         group.MapPost("/group", CreateGroup)
             .AddEndpointFilter<ValidateBodyFilter<CreateGroupConversationRequest>>();
-            // .RequireRateLimiting("conversations-create"); // volitelné
 
-        // rename group
         group.MapPut("/{conversationId:guid}/title", Rename)
             .AddEndpointFilter<ValidateBodyFilter<RenameConversationRequest>>();
-            // .RequireRateLimiting("conversations-rename"); // volitelné
 
-        // add members
         group.MapPost("/{conversationId:guid}/members", AddMembers)
             .AddEndpointFilter<ValidateBodyFilter<AddMembersRequest>>();
 

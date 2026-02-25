@@ -19,12 +19,10 @@ public static class MessageEndpoints
         // historie zpráv
         group.MapGet("/", GetHistory);
 
-        // odeslání zprávy (REST) + anti-spam + validace
         group.MapPost("/", Send)
             .RequireRateLimiting("send-message")
             .AddEndpointFilter<ValidateBodyFilter<SendMessageRequest>>();
 
-        // mark read
         group.MapPost("/read", MarkRead)
             .AddEndpointFilter<ValidateBodyFilter<MarkReadRequest>>();
 
