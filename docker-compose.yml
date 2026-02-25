@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: chatapp-postgres
+    environment:
+      POSTGRES_DB: chatapp
+      POSTGRES_USER: chatapp
+      POSTGRES_PASSWORD: chatapp
+    ports:
+      - "5432:5432"
+    volumes:
+      - chatapp_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chatapp -d chatapp"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chatapp-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Postgres: Host=postgres;Port=5432;Database=chatapp;Username=chatapp;Password=chatapp
+      Jwt__Issuer: ChatApp
+      Jwt__Audience: ChatAppClients
+      Jwt__SigningKey: CHANGE_ME_TO_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS
+      Jwt__AccessTokenMinutes: "120"
+
+volumes:
+  chatapp_pg:
