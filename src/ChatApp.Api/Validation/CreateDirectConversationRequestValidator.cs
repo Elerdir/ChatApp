@@ -1,6 +1,13 @@
-﻿namespace ChatApp.Api.Validation;
+﻿using ChatApp.Application.Conversations;
+using FluentValidation;
 
-public class CreateDirectConversationRequestValidator
+namespace ChatApp.Api.Validation;
+
+public sealed class CreateDirectConversationRequestValidator : AbstractValidator<CreateDirectConversationRequest>
 {
-    
+    public CreateDirectConversationRequestValidator()
+    {
+        RuleFor(x => x.OtherUserId)
+            .NotEmpty();
+    }
 }

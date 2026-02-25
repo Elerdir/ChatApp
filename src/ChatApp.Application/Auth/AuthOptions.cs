@@ -1,6 +1,7 @@
 ﻿namespace ChatApp.Application.Auth;
 
-public class AuthOptions
+public sealed class AuthOptions
 {
-    
+    public const string SectionName = "Auth";
+    public int RefreshTokenDays { get; init; } = 60;
 }

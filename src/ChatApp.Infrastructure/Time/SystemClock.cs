@@ -1,6 +1,9 @@
-﻿namespace ChatApp.Infrastructure.Time;
+﻿using ChatApp.Application.Abstractions;
 
-public class SystemClock
+namespace ChatApp.Infrastructure.Time;
+
+
+public sealed class SystemClock : IClock
 {
-    
+    public DateTimeOffset UtcNow => DateTimeOffset.UtcNow;
 }

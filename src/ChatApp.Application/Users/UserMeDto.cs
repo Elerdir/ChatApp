@@ -1,3 +1,8 @@
 ﻿namespace ChatApp.Application.Users;
 
-public record UserMeDto();
+public sealed record UserMeDto(
+    Guid UserId,
+    string Username,
+    string? DisplayName,
+    string? AvatarUrl
+);

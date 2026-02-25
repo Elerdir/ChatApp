@@ -1,3 +1,3 @@
 ﻿namespace ChatApp.Application.Users;
 
-public record UpdateProfileRequest();
+public sealed record UpdateProfileRequest(string DisplayName);

@@ -1,3 +1,5 @@
 ﻿namespace ChatApp.Application.Users;
 
-public record UpdateUserSettingsRequest();
+public sealed record UpdateUserSettingsRequest(
+    string Scope,
+    IReadOnlyDictionary<string, string> Settings);

@@ -1,7 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-
-namespace ChatApp.Infrastructure.Auth;
+﻿namespace ChatApp.Application.Security;
 
 public interface IRefreshTokenService
 {

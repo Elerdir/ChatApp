@@ -1,6 +1,13 @@
-﻿namespace ChatApp.Api.Validation;
+﻿using ChatApp.Application.Auth;
+using FluentValidation;
 
-public class LogoutRequestValidator
+namespace ChatApp.Api.Validation;
+
+public sealed class LogoutRequestValidator : AbstractValidator<LogoutRequest>
 {
-    
+    public LogoutRequestValidator()
+    {
+        RuleFor(x => x.RefreshToken)
+            .NotEmpty();
+    }
 }

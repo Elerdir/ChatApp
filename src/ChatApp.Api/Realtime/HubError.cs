@@ -1,3 +1,3 @@
 ﻿namespace ChatApp.Api.Realtime;
 
-public record HubError();
+public sealed record HubError(string Code, string Message);

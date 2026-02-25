@@ -1,6 +1,6 @@
 ﻿using ChatApp.Domain.Users;
 
-namespace ChatApp.Infrastructure.Auth;
+namespace ChatApp.Application.Security;
 
 public interface ITokenService
 {

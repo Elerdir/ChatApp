@@ -1,13 +1,8 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using ChatApp.Application.Security;
 
 namespace ChatApp.Infrastructure.Auth;
-
-public interface IRefreshTokenService
-{
-    string GenerateToken();
-    string HashToken(string token);
-}
 
 public sealed class RefreshTokenService : IRefreshTokenService
 {

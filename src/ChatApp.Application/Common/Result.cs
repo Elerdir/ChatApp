@@ -1,4 +1,6 @@
-﻿namespace ChatApp.Api.Common;
+﻿using ChatApp.Application.Common;
+
+namespace ChatApp.Api.Common;
 
 public readonly struct Result
 {

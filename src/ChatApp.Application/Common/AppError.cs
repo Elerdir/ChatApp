@@ -1,4 +1,4 @@
-﻿namespace ChatApp.Api.Common;
+﻿namespace ChatApp.Application.Common;
 
 public enum ErrorType
 {
